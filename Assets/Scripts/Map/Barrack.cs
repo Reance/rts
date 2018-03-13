@@ -41,9 +41,9 @@ public class Barrack :Building
     //    this.Type = type;
     //    this.BuildingSize = size;
     //}
-    public void SpawnSoldier()
+    public void SpawnSoldier(GameObject soldier)
     {
-        GameObject soldier= Instantiate(soldierPrefab, SpawnPosition, Quaternion.identity);
+        soldier.transform.position = SpawnPosition;
         soldier.GetComponent<ISoldier>().CurrentPoint = SpawnPoint;
     }
  

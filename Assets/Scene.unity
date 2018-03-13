@@ -145,7 +145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000007479717, y: -0.000030517578}
+  m_AnchoredPosition: {x: -0.000007473582, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &12723359
@@ -381,9 +381,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Rifleman
-
-'
+  m_Text: soldier
 --- !u!222 &270450698
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -517,6 +515,7 @@ GameObject:
   m_Component:
   - component: {fileID: 575385534}
   - component: {fileID: 575385533}
+  - component: {fileID: 575385535}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -548,6 +547,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &575385535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 575385532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f544928d34fe04cb994d93cde90245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefab:
+  - {fileID: 1689126224605544, guid: ec7777e094436744ca10b20dcf18d0ac, type: 2}
+  - {fileID: 1689126224605544, guid: ec7777e094436744ca10b20dcf18d0ac, type: 2}
+  - {fileID: 1689126224605544, guid: ec7777e094436744ca10b20dcf18d0ac, type: 2}
+  - {fileID: 1689126224605544, guid: ec7777e094436744ca10b20dcf18d0ac, type: 2}
+  - {fileID: 1689126224605544, guid: ec7777e094436744ca10b20dcf18d0ac, type: 2}
+  - {fileID: 1689126224605544, guid: ec7777e094436744ca10b20dcf18d0ac, type: 2}
+  - {fileID: 1689126224605544, guid: ec7777e094436744ca10b20dcf18d0ac, type: 2}
+  - {fileID: 1689126224605544, guid: ec7777e094436744ca10b20dcf18d0ac, type: 2}
+  - {fileID: 1689126224605544, guid: ec7777e094436744ca10b20dcf18d0ac, type: 2}
+  - {fileID: 1689126224605544, guid: ec7777e094436744ca10b20dcf18d0ac, type: 2}
 --- !u!1 &596191794
 GameObject:
   m_ObjectHideFlags: 0

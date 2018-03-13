@@ -9,11 +9,15 @@ public class GameManager : Singleton<GameManager>
     public ISoldier SelectedSoldier { get; private set; }
     public Point StartPoint { get; private set; }
     public Point EndPoint { get; private set; }
-    
+    public ObjectPool Pool{ get; set; }
 	// Use this for initialization
+    void Awake()
+    {
+        Pool = GetComponent<ObjectPool>();
+    }
 	void Start ()
 	{
-	    EventManager.OnTrainSoldier += TrainSoldier;
+	   // EventManager.OnTrainSoldier += TrainSoldier;
 	}
 	
 	// Update is called once per frame
@@ -38,9 +42,10 @@ public class GameManager : Singleton<GameManager>
         MouseHover.Instance.Deactivate();
     }
 
-    private void TrainSoldier(Building building)
+    public void TrainSoldier(Building building,string soldierType)
     {
-        building.GetComponent<Barrack>().SpawnSoldier();
+        
+        building.GetComponent<Barrack>().SpawnSoldier(Pool.getObject(soldierType));
     }
 
     public void SelectSoldier(ISoldier soldier)
