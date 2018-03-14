@@ -44,8 +44,11 @@ public class GameManager : Singleton<GameManager>
 
     public void TrainSoldier(Building building,string soldierType)
     {
+        if (building.GetComponent<Barrack>().GetAvailableSpawnPoint())
+        {
+            building.GetComponent<Barrack>().SpawnSoldier(Pool.getObject(soldierType));
+        }
         
-        building.GetComponent<Barrack>().SpawnSoldier(Pool.getObject(soldierType));
     }
 
     public void SelectSoldier(ISoldier soldier)

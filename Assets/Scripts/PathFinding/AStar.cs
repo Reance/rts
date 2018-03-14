@@ -100,11 +100,11 @@ public static class AStar
             }
         }
         //ONLY FOR DEBUGGING ~~REMOVE THIS LATER
-        AStarDebugger aStarDebugger = GameObject.FindObjectOfType<AStarDebugger>();
-        if (aStarDebugger != null)
-        {
-            aStarDebugger.DebugPath(openList, closedList, startNode, endNode, finalPath);
-        }
+        //AStarDebugger aStarDebugger = GameObject.FindObjectOfType<AStarDebugger>();
+        //if (aStarDebugger != null)
+        //{
+        //    aStarDebugger.DebugPath(openList, closedList, startNode, endNode, finalPath);
+        //}
 
         return finalPath;
 

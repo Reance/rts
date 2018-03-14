@@ -40,7 +40,9 @@ public class Rifleman : MonoBehaviour,ISoldier {
             transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
             if (transform.position == destination && path.Count > 0)
             {
+                LevelManager.Instance.Tiles[CurrentPoint].isAvailableToWalk = true;
                 CurrentPoint = path.Peek().GridPosition;
+                LevelManager.Instance.Tiles[CurrentPoint].isAvailableToWalk = false;
                 destination = path.Pop().WorldPosition;
             }
             
@@ -53,9 +55,10 @@ public class Rifleman : MonoBehaviour,ISoldier {
     }
 
     // Use this for initialization
-    void Start () {
-		
-	}
+    void Start ()
+    {
+        LevelManager.Instance.Tiles[CurrentPoint].isAvailableToWalk = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {

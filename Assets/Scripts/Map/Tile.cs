@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour {
     public bool isAvailableToBuild { get; set; }
     public bool isAvailableToWalk { get; set; }
 
+  
     private SpriteRenderer spriteRenderer;
     private Color32 defaultColor;
     private readonly Color32 notAvailableColor =new Color32(255,118,118,255);
@@ -26,6 +27,7 @@ public class Tile : MonoBehaviour {
     {
         isAvailableToWalk = true;
         isAvailableToBuild = true;
+        
     }
     public void Init(Point gridPos,Vector3 worldPos,Transform parent)
     {
@@ -35,6 +37,11 @@ public class Tile : MonoBehaviour {
         transform.position = worldPos;
         LevelManager.Instance.Tiles.Add(gridPos,this);
         this.transform.SetParent(parent);
+    }
+
+    private void Uptade()
+    {
+        
     }
     private void OnMouseOver()
     {
@@ -74,6 +81,8 @@ public class Tile : MonoBehaviour {
             spriteRenderer.color = defaultColor;
         }
     }
+
+    
     private void PlaceBuilding()
     {
         Debug.Log("Placed a building here: " + GridPosition.X + ", " + GridPosition.Y);

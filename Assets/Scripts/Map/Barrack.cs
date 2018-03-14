@@ -28,7 +28,7 @@ public class Barrack :Building
     void Start()
     {
         SpawnPoint = new Point(GridPosition.X + 1, GridPosition.Y + 1);
-        SpawnPosition = LevelManager.Instance.Tiles[SpawnPoint].transform.position;
+        
         
     }
 	// Update is called once per frame
@@ -43,8 +43,32 @@ public class Barrack :Building
     //}
     public void SpawnSoldier(GameObject soldier)
     {
-        soldier.transform.position = SpawnPosition;
-        soldier.GetComponent<ISoldier>().CurrentPoint = SpawnPoint;
+        
+            SpawnPosition = LevelManager.Instance.Tiles[SpawnPoint].transform.position;
+            soldier.transform.position = SpawnPosition;
+            soldier.GetComponent<ISoldier>().CurrentPoint = SpawnPoint;
+        
+       
     }
- 
+
+    public bool GetAvailableSpawnPoint()
+    {
+        
+        for (int y = -SizeY; y <= 1; y++)
+        {
+            for (int x = -1; x < SizeX + 1; x++)
+            {
+               Point point = new Point(GridPosition.X+x,GridPosition.Y+y);
+                if (LevelManager.Instance.Tiles[point].isAvailableToWalk)
+                {
+                    SpawnPoint=point;
+                    return true;
+                }
+                
+            }
+        }
+
+        return false;
+
+    }
 }
