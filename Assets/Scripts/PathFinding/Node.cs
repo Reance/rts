@@ -6,6 +6,7 @@ public class Node
 {
 
     public Point GridPosition { get; set; }
+    public Vector2 WorldPosition { get; set; }
     public Tile TileRef { get; private set; }
     public Node Parent { get; private set; }
     public int G { get; private set; }
@@ -15,6 +16,7 @@ public class Node
     {
         this.TileRef = tileRef;
         this.GridPosition = tileRef.GridPosition;
+        this.WorldPosition = TileRef.transform.position;
     }
 
     public void CalculateValues(Node parent,Node destination,int gCost)

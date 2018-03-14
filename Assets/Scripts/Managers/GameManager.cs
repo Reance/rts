@@ -51,12 +51,14 @@ public class GameManager : Singleton<GameManager>
     public void SelectSoldier(ISoldier soldier)
     {
         SelectedSoldier = soldier;
-        StartPoint = soldier.CurrentPoint;
+        
     }
 
     public void SelectDestination(Point endPoint)
     {
+        StartPoint = SelectedSoldier.CurrentPoint;
         EndPoint = endPoint;
-        AStar.GetPath(StartPoint,EndPoint);
+       Stack<Node> path= AStar.GetPath(StartPoint, EndPoint);
+        SelectedSoldier.Path = path;
     }
 }

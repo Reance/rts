@@ -39,7 +39,7 @@ public class Tile : MonoBehaviour {
     private void OnMouseOver()
     {
 
-        Debug.Log(GridPosition.X + ", " + GridPosition.Y);
+        //Debug.Log(GridPosition.X + ", " + GridPosition.Y);
         if (!EventSystem.current.IsPointerOverGameObject() && GameManager.Instance.ClickedBuildButton != null)
         {
             Building building = GameManager.Instance.ClickedBuildButton.BuildPrefab.GetComponent<Building>();

@@ -16,7 +16,7 @@ public static class AStar
         }
     }
 
-    public static void GetPath(Point StartPoint,Point EndPoint)
+    public static Stack<Node> GetPath(Point StartPoint,Point EndPoint)
     {
         if (nodes == null)
         {
@@ -99,12 +99,16 @@ public static class AStar
                 break;
             }
         }
-        //ONLY FOR DEBUGGING ~~ REMOVE THIS LATER
+        //ONLY FOR DEBUGGING ~~REMOVE THIS LATER
         AStarDebugger aStarDebugger = GameObject.FindObjectOfType<AStarDebugger>();
         if (aStarDebugger != null)
         {
-            aStarDebugger.DebugPath(openList, closedList, startNode, endNode,finalPath);
+            aStarDebugger.DebugPath(openList, closedList, startNode, endNode, finalPath);
         }
+
+        return finalPath;
+
+        
     }
 
     private static bool isConnectedDiagonally(Node currentNode, Node neighbour)

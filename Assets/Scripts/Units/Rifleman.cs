@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Rifleman : MonoBehaviour,ISoldier {
@@ -7,7 +8,19 @@ public class Rifleman : MonoBehaviour,ISoldier {
     public Point CurrentPoint { get; set; }
 
     public int Health { get; set; }
-  
+    [SerializeField]
+    private float speed;
+
+    private Vector3 destination;
+    private Stack<Node> path;
+    public Stack<Node> Path {
+        get { return path; }
+        set
+        {
+            this.path = value;
+            destination = path.Pop().WorldPosition;
+        }
+    }
 
     public void Attack()
     {
@@ -21,9 +34,19 @@ public class Rifleman : MonoBehaviour,ISoldier {
 
     public void Move()
     {
-        throw new System.NotImplementedException();
-    }
+        if (Path!=null)
+        {
 
+            transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
+            if (transform.position == destination && path.Count > 0)
+            {
+                CurrentPoint = path.Peek().GridPosition;
+                destination = path.Pop().WorldPosition;
+            }
+            
+
+        }
+    }
     public void TakeDamage(int damageAmount)
     {
         throw new System.NotImplementedException();
@@ -36,7 +59,7 @@ public class Rifleman : MonoBehaviour,ISoldier {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		Move();
 	}
 
     void OnMouseOver()
