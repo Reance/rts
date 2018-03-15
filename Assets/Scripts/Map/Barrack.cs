@@ -47,7 +47,7 @@ public class Barrack :Building
         SpawnPosition = LevelManager.Instance.Tiles[SpawnPoint].transform.position;
         soldier.transform.position = SpawnPosition;
         soldier.GetComponent<ISoldier>().CurrentPoint = SpawnPoint;
-        LevelManager.Instance.Tiles[SpawnPoint].isAvailableToWalk = false;
+        LevelManager.Instance.Tiles[SpawnPoint].SetAvailability(1,1,false);
 
 
     }

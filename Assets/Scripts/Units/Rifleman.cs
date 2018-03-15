@@ -22,6 +22,10 @@ public class Rifleman : MonoBehaviour,ISoldier {
             {
                 destination = path.Pop().WorldPosition;
             }
+            else
+            {
+                path = null;
+            }
         }
     }
 
@@ -32,7 +36,7 @@ public class Rifleman : MonoBehaviour,ISoldier {
 
     public void Die()
     {
-        LevelManager.Instance.Tiles[CurrentPoint].isAvailableToWalk = true;
+        LevelManager.Instance.Tiles[CurrentPoint].SetAvailability(1,1,true);
         path = null;
         GameManager.Instance.Pool.RelaseObject(this.gameObject);
         
@@ -46,9 +50,9 @@ public class Rifleman : MonoBehaviour,ISoldier {
             transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
             if (transform.position == destination && path.Count > 0)
             {
-                LevelManager.Instance.Tiles[CurrentPoint].isAvailableToWalk = true;
+                LevelManager.Instance.Tiles[CurrentPoint].SetAvailability(1,1,true);
                 CurrentPoint = path.Peek().GridPosition;
-                LevelManager.Instance.Tiles[CurrentPoint].isAvailableToWalk = false;
+                LevelManager.Instance.Tiles[CurrentPoint].SetAvailability(1,1,false);
                 destination = path.Pop().WorldPosition;
             }
             
