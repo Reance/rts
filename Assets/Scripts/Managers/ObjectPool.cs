@@ -5,21 +5,37 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] objectPrefab;
+    private GameObject[] objectPrefabs;
+
+    private List<GameObject> pooledObjects=new List<GameObject>();
 
     public GameObject getObject(string type)
     {
-        for (int i = 0; i < objectPrefab.Length; i++)
+        foreach (GameObject gameObject in pooledObjects)
         {
-            if (objectPrefab[i].name == type)
+            if (gameObject.name == type && !gameObject.activeInHierarchy)
             {
-                GameObject newObject = Instantiate(objectPrefab[i]);
-                //newObject.name = type;
+                gameObject.SetActive(true);
+                return gameObject;
+            }
+        }
+        for (int i = 0; i < objectPrefabs.Length; i++)
+        {
+            if (objectPrefabs[i].name == type)
+            {
+                GameObject newObject = Instantiate(objectPrefabs[i]);
+                newObject.name = type;
+                pooledObjects.Add(newObject);
                 return newObject;
             }
         }
 
         return null;
+    }
+
+    public void RelaseObject(GameObject gameObject)
+    {
+        gameObject.SetActive(false);
     }
 
 }

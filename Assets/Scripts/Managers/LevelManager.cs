@@ -10,6 +10,7 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private Transform Map;
 
     public Dictionary<Point,Tile> Tiles { get; set; }
+    public List<Building> Buildings;
     [SerializeField]
     private  int mapSizeX=40;
     [SerializeField]

@@ -42,6 +42,13 @@ public class GameManager : Singleton<GameManager>
         MouseHover.Instance.Deactivate();
     }
 
+    public void DeselectBuilding()
+    {
+        foreach (var building in LevelManager.Instance.Buildings)
+        {
+            building.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+    }
     public void TrainSoldier(Building building,string soldierType)
     {
         if (building.GetComponent<Barrack>().GetAvailableSpawnPoint())

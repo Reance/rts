@@ -19,36 +19,28 @@ public class Building:MonoBehaviour
     public Point GridPosition;
     
     //int Cost { get; set; }//TODO need currency system  
-    private SpriteRenderer spriteRenderer;
-    IEnumerator Wait()
-    {
-        // suspend execution for  seconds
-        yield return new WaitForSeconds(2);
-        
-    }
-    void Start()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        EventManager.OnBuildingSelected += TurnOffHighlight;
-    }
+    
+
+  
 
     private void OnMouseOver()
     {
-        if (!EventSystem.current.IsPointerOverGameObject()&&Input.GetKeyDown(KeyCode.Mouse0))
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            EventManager.SelectBuilding(this);
-            TurnOnHighlight();
+            if(Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                
+                EventManager.SelectBuilding(this);
+                GameManager.Instance.DeselectBuilding();
+                StartCoroutine(HighlightBuildingCoroutine());
+
+            }
         }
     }
-    //TODO make this work
-    private void TurnOffHighlight(Building building)
-    {
-        spriteRenderer.color = Color.white;
-    }
 
-    IEnumerator TurnOnHighlight()
+    public IEnumerator HighlightBuildingCoroutine()
     {
-        yield return StartCoroutine("Wait");
-        spriteRenderer.color = Color.yellow;
+        yield return new WaitForEndOfFrame();
+        GetComponent<SpriteRenderer>().color=Color.yellow;
     }
 }

@@ -93,6 +93,7 @@ public class Tile : MonoBehaviour {
         int x= building.GetComponent<Building>().SizeX;
         int y = building.GetComponent<Building>().SizeY;
         building.GetComponent<Building>().GridPosition = GridPosition;
+        LevelManager.Instance.Buildings.Add(building.GetComponent<Building>());
         //sending boolean : there could be an option to destroy buildings so its for open the tiles to build again.
         SetAvailability(x,y,false);    
     }

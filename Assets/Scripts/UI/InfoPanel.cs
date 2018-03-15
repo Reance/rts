@@ -10,6 +10,8 @@ public class InfoPanel : MonoBehaviour
     [SerializeField]
     private Button ProductionButton;
     [SerializeField]
+    private Button CloseButton;
+    [SerializeField]
     private Text BuildingName;
     [SerializeField]
     private Text ProductName;
@@ -22,6 +24,7 @@ public class InfoPanel : MonoBehaviour
 	{
 	    EventManager.OnBuildingSelected += ShowBuildingInfo;
         ProductionButton.onClick.AddListener(OnProduceButtonClicked);
+        CloseButton.onClick.AddListener(OnCloseButtonClicked);
         View.SetActive(false);
 	}
 	
@@ -56,5 +59,10 @@ public class InfoPanel : MonoBehaviour
 
        // EventManager.TrainSoldier(LastShownBuilding);
         GameManager.Instance.TrainSoldier(LastShownBuilding,ProductName.text);//need refactoring!
+    }
+
+    void OnCloseButtonClicked()
+    {
+        View.SetActive(false);
     }
 }

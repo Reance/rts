@@ -111,7 +111,6 @@ MonoBehaviour:
   SizeY: 4
   soldierPrefab: {fileID: 1689126224605544, guid: ec7777e094436744ca10b20dcf18d0ac,
     type: 2}
-  SpawnPoint: {fileID: 4173774044683348}
 --- !u!212 &212016852209104740
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -11,4 +11,5 @@ public interface ISoldier  {
     void Attack();
     void TakeDamage(int damageAmount);
     void Die();
+    
 }

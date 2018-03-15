@@ -18,7 +18,10 @@ public class Rifleman : MonoBehaviour,ISoldier {
         set
         {
             this.path = value;
-            destination = path.Pop().WorldPosition;
+            if(path.Count>0)
+            {
+                destination = path.Pop().WorldPosition;
+            }
         }
     }
 
@@ -29,12 +32,15 @@ public class Rifleman : MonoBehaviour,ISoldier {
 
     public void Die()
     {
-        throw new System.NotImplementedException();
+        LevelManager.Instance.Tiles[CurrentPoint].isAvailableToWalk = true;
+        path = null;
+        GameManager.Instance.Pool.RelaseObject(this.gameObject);
+        
     }
 
     public void Move()
     {
-        if (Path!=null)
+        if (path!=null)
         {
 
             transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
@@ -57,7 +63,7 @@ public class Rifleman : MonoBehaviour,ISoldier {
     // Use this for initialization
     void Start ()
     {
-        LevelManager.Instance.Tiles[CurrentPoint].isAvailableToWalk = false;
+        
     }
 	
 	// Update is called once per frame
@@ -70,6 +76,11 @@ public class Rifleman : MonoBehaviour,ISoldier {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             GameManager.Instance.SelectSoldier(this);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            Die();
         }
     }
 }
