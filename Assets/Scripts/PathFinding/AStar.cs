@@ -99,7 +99,7 @@ public static class AStar
                 break;
             }
         }
-        //ONLY FOR DEBUGGING ~~REMOVE THIS LATER
+        //ONLY FOR DEBUGGING 
         //AStarDebugger aStarDebugger = GameObject.FindObjectOfType<AStarDebugger>();
         //if (aStarDebugger != null)
         //{
@@ -110,7 +110,7 @@ public static class AStar
 
         
     }
-
+    //checks the diagonal path for collisions 
     private static bool isConnectedDiagonally(Node currentNode, Node neighbour)
     {
         Point direction = neighbour.GridPosition - currentNode.GridPosition;

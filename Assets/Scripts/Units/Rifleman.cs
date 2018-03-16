@@ -36,6 +36,7 @@ public class Rifleman : MonoBehaviour,ISoldier {
 
     public void Die()
     {
+        //setting up tile availability  to prevent collisions with other objects
         LevelManager.Instance.Tiles[CurrentPoint].SetAvailability(1,1,true);
         path = null;
         GameManager.Instance.Pool.RelaseObject(this.gameObject);

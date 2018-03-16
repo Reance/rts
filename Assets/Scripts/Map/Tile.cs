@@ -95,8 +95,10 @@ public class Tile : MonoBehaviour {
         building.GetComponent<Building>().GridPosition = GridPosition;
         LevelManager.Instance.Buildings.Add(building.GetComponent<Building>());
         //sending boolean : there could be an option to destroy buildings so its for open the tiles to build again.
+        //Sets availabilities of tiles after structure complete
         SetAvailability(x,y,false);    
     }
+    
     public void SetAvailability(int _x,int _y, bool availability)
     {
         for (int y = 0; y< _y; y++)
@@ -114,7 +116,7 @@ public class Tile : MonoBehaviour {
         }
         
     }
-
+    //checks availabilities of tiles
     public bool GetAvailabilityToBuild(int _x,int _y)
     {
         for (int y = 0; y < _y; y++)

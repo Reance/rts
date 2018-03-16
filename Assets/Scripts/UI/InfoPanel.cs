@@ -56,9 +56,7 @@ public class InfoPanel : MonoBehaviour
 
     void OnProduceButtonClicked()
     {
-
-       // EventManager.TrainSoldier(LastShownBuilding);
-        GameManager.Instance.TrainSoldier(LastShownBuilding,ProductName.text);//need refactoring!
+        GameManager.Instance.TrainSoldier(LastShownBuilding,ProductName.text);
     }
 
     void OnCloseButtonClicked()

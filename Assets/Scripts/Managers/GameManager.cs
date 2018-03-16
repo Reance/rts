@@ -13,7 +13,7 @@ public class GameManager : Singleton<GameManager>
 	// Use this for initialization
     void Awake()
     {
-        Pool = GetComponent<ObjectPool>();
+        Pool = FindObjectOfType<ObjectPool>();
     }
 	void Start ()
 	{
